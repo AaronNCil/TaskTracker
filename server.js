@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const TodoTask = require("./models/TodoTask");
+const fs = require('fs');
+const TodoTask = require("./models/getTask");
 dotenv.config();
 
 app.use("/static", express.static("public"));
@@ -16,7 +17,7 @@ app.listen(3000, () => console.log("Server Up and running"));
 // GET METHOD
 app.get("/", (req, res) => {
   TodoTask.find({}, (err, tasks) => {
-  res.render("todo.ejs", { todoTasks: tasks });
+  res.render("taskList.ejs", { todoTasks: tasks });
   });
   });
 
@@ -43,7 +44,7 @@ app
 .get((req, res) => {
 const id = req.params.id;
 TodoTask.find({}, (err, tasks) => {
-res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
+res.render("taskListEdit.ejs", { todoTasks: tasks, idTask: id });
 });
 })
 .post((req, res) => {
