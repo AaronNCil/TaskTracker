@@ -2,7 +2,11 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const fs = require('fs');
 const TodoTask = require("./models/getTask");
+// const TodoTask = fs.readFile(__dirname + '/models/getTask.js', (err, data) => {
+//   return data;
+// });
 dotenv.config();
 
 app.use("/static", express.static("public"));
