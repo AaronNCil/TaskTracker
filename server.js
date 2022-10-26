@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const fs = require('fs');
 const TodoTask = require("./models/getTask");
 dotenv.config();
 
@@ -11,7 +10,7 @@ app.use("/static", express.static("public"));
 //connection to db
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
 console.log("Connected to db!");
-app.listen(3000, () => console.log("Server Up and running"));
+app.listen(4000, () => console.log("Server Up and running"));
 });
 
 // GET METHOD
@@ -20,13 +19,13 @@ app.get("/", (req, res) => {
   res.render("taskList.ejs", { todoTasks: tasks });
   });
   });
-
-app.set("view engine", "ejs");
+  // renders page as taskList.ejs
+app.set("view engine", "ejs"); // sets up view engine(ejs)
 
 app.use(express.urlencoded({ extended: true }));
 
 // POST METHOD
-app.post('/',async (req, res) => {
+app.post('/', async (req, res) => {
   const todoTask = new TodoTask({
   content: req.body.content
   });
