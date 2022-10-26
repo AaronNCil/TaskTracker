@@ -1,4 +1,4 @@
-Taches Task Tracker
+Task Tracker
 This application has the ability to add tasks, edit, save, and delete them.
 
 ---------------------------------------------------
