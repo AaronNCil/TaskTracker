@@ -14,7 +14,7 @@ app.use("/static", express.static("public"));
 //connection to db
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
 console.log("Connected to db!");
-app.listen(8080, () => console.log("Server Up and running"));
+app.listen(3000, () => console.log("Server Up and running"));
 });
 
 // GET METHOD
